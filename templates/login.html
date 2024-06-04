@@ -1,0 +1,48 @@
+{% extends 'header.html' %} {% block content %}
+<div class="login-wrapper">
+  <div class="loginbox">
+    <div class="login-auth">
+      <div class="login-auth-wrap">
+        <div class="sign-group">
+          <a href="/" class="btn sign-up"
+            ><span
+              ><i class="fe feather-corner-down-left" aria-hidden="true"></i
+            ></span>
+            Back To Home</a
+          >
+        </div>
+        <h1>Sign In</h1>
+        {% if myMsg == "0" %}
+        <p style="color: red">Please enter your email</p>
+        {% elif myMsg == "1" %}
+        <p style="color: red">Please enter Password</p>
+        {% elif myMsg == "2" %}
+        <p style="color: red">Password Incorrect</p>
+        {% endif %}
+        <form action="verifylogin" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label class="form-label"> Email <span class="text-danger">*</span></label>
+            <input type="email" class="form-control" name="tUser" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Password <span class="text-danger">*</span></label>
+            <div class="pass-group">
+              <input type="password" class="form-control pass-input" name="tPass" />
+              <span class="fas fa-eye toggle-password"></span>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-outline-light w-100 btn-size mt-1" >Sign In </button>
+      
+          <div class="text-center dont-have">
+            Don't have an account yet? <a href="register">Register</a>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

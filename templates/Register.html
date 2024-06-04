@@ -1,0 +1,174 @@
+{% extends 'header.html' %} {% block content %}
+
+<div class="login-wrapper">
+  <div class="loginbox">
+    <div class="login-auth">
+      <div class="login-auth-wrap">
+        <div class="sign-group">
+          <a href="/" class="btn sign-up"
+            ><span
+              ><i class="fe feather-corner-down-left" aria-hidden="true"></i
+            ></span>
+            Back To Home</a
+          >
+        </div>
+        {% if data != null %}
+        <h1>Update Profile</h1>
+        {% else %}
+        <h1>Sign Up</h1>
+        {% endif %}
+        {% if myMsg == "0" %}
+        <p style="color: red">Please enter Full Name</p>
+        {% elif myMsg == "1" %}
+        <p style="color: red">Please enter your email</p>
+        {% elif myMsg == "2" %}
+        <p style="color: red">Please enter Password</p>
+        {% elif myMsg == "3" %}
+        <p style="color: red">Please enter your city</p>
+        {% elif myMsg == "4" %}
+        <p style="color: red">Please enter your Phone Number</p>
+        {% elif myMsg == "5" %}
+        <p style="color: green">Account Successfully created</p>
+        {% elif myMsg == "6" %}
+        <p style="color: red">Email already exist!</p>
+        {% endif %}
+
+        {% if data != null %}
+        <form action="register" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <input
+              type="hidden"
+              class="form-control"
+              name="tid"
+              value="{{ request.session.id }}"
+            />
+            <label class="form-label"
+              >Username <span class="text-danger">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="tname"
+              value="{{ data.username }}"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label"
+              >Email <span class="text-danger">*</span></label
+            >
+            <input
+              type="email"
+              class="form-control"
+              name="temail"
+              value="{{ data.email }}"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label"
+              >Password <span class="text-danger">*</span></label
+            >
+            <div class="pass-group">
+              <input
+                type="password"
+                class="form-control pass-input"
+                name="tpass"
+                value="{{ data.passwrd }}"
+              />
+              <span class="fas fa-eye toggle-password"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label"
+              >City <span class="text-danger">*</span></label
+            >
+            <input type="text" class="form-control" name="tcity" value="{{ data.city }}" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label"
+              >Phone Number <span class="text-danger">*</span></label
+            >
+            <input type="number" class="form-control" name="tnum" value="{{ data.phoneNumber }}" />
+          </div>
+
+          <button type="submit" class="btn btn-outline-light w-100 btn-size mt-1">
+            Update Profile
+          </button>
+        </form>
+        {% else %}
+        <form action="register" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label class="form-label"
+              >Username <span class="text-danger">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="tname"
+              value="{{ FN }}"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label"
+              >Email <span class="text-danger">*</span></label
+            >
+            <input
+              type="email"
+              class="form-control"
+              name="temail"
+              value="{{ Email }}"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label"
+              >Password <span class="text-danger">*</span></label
+            >
+            <div class="pass-group">
+              <input
+                type="password"
+                class="form-control pass-input"
+                name="tpass"
+                value=""
+              />
+              <span class="fas fa-eye toggle-password"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label"
+              >City <span class="text-danger">*</span></label
+            >
+            <input type="text" class="form-control" name="tcity" value="{{ City }}" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label"
+              >Phone Number <span class="text-danger">*</span></label
+            >
+            <input type="number" class="form-control" name="tnum" value="{{ Phone }}" />
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-outline-light w-100 btn-size mt-1"
+          >
+            Sign Up
+          </button>
+          <div class="text-center dont-have">
+            Already have an Account? <a href="login">Sign In</a>
+          </div>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

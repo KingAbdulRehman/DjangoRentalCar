@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from dreamsrent.dreamguystech.com/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Jul 2023 19:31:18 GMT -->
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0"
+    />
+    <title>Dreams Rent | Template</title>
+
+    <link rel="shortcut icon" href="static/assets/img/favicon.png" />
+
+    <link rel="stylesheet" href="static/assets/css/bootstrap.min.css" />
+
+    <link
+      rel="stylesheet"
+      href="static/assets/plugins/fontawesome/css/fontawesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="static/assets/plugins/fontawesome/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="static/assets/plugins/select2/css/select2.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="static/assets/css/bootstrap-datetimepicker.min.css"
+    />
+
+    <link rel="stylesheet" href="static/assets/plugins/aos/aos.css" />
+
+    <link rel="stylesheet" href="static/assets/css/feather.css" />
+
+    <link rel="stylesheet" href="static/assets/css/owl.carousel.min.css" />
+
+    <link rel="stylesheet" href="static/assets/css/style.css" />
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <header class="header">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg header-nav">
+            <div class="navbar-header">
+              <a id="mobile_btn" href="javascript:void(0);">
+                <span class="bar-icon">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </a>
+              <a href="/" class="navbar-brand logo">
+                <img
+                  src="static/assets/img/logo.png"
+                  class="img-fluid"
+                  alt="Logo"
+                />
+              </a>
+              <a href="index.html" class="navbar-brand logo-small">
+                <img
+                  src="static/assets/img/logo-small.png"
+                  class="img-fluid"
+                  alt="Logo"
+                />
+              </a>
+            </div>
+            <div class="main-menu-wrapper">
+              <div class="menu-header">
+                <a href="index.html" class="menu-logo">
+                  <img
+                    src="static/assets/img/logo.svg"
+                    class="img-fluid"
+                    alt="Logo"
+                  />
+                </a>
+                <a
+                  id="menu_close"
+                  class="menu-close"
+                  href="javascript:void(0);"
+                >
+                  <i class="fas fa-times"></i
+                ></a>
+              </div>
+              <ul class="main-nav">
+                <li><a href="/">Home</a></li>
+                <!--<li class="has-submenu">
+                  <a href>Listings <i class="fas fa-chevron-down"></i></a>
+                  <ul class="submenu">
+                    <li><a href="carlist">Cars</a></li>
+                  </ul>
+                </li>-->
+                <li><a href="carlist">Cars</a></li>
+                {% if request.session.id > 0 %}
+                <li><a href="bookhis">Book History</a></li>
+                {% endif %}
+                <li><a href="contact">Contact</a></li>
+              </ul>
+            </div>
+            {% if request.session.id > 0 %}
+            <ul class="nav header-navbar-rht">
+              <li class="nav-item">
+                <a style="font-size: 20px; color: black;" class="nav-link header" href="updatePro?id={{ request.session.id }}"><span><i class="fa-regular fa-hand"></i></span>Hello, {{ request.session.Name }}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link header-reg" href="logout"><span><i class="fa-solid fa-lock"></i></span>Logout</a>
+              </li>
+            </ul>
+            {% else %}
+            <ul class="nav header-navbar-rht">
+              <li class="nav-item">
+                <a class="nav-link header-login" href="login"><span><i class="fa-regular fa-user"></i></span>Sign In</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link header-reg" href="register"><span><i class="fa-solid fa-lock"></i></span>Sign Up</a>
+              </li>
+            </ul>
+            {% endif %}
+          </nav>
+        </div>
+      </header>
+
+      {% block content %}{% endblock content %}
+
+      <footer class="footer">
+        <div class="footer-top aos" data-aos="fade-up">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="footer-contact footer-widget">
+                  <h5 class="footer-title">Contact Info</h5>
+                  <div class="footer-contact-info">
+                    <div class="footer-address">
+                      <span><i class="feather-phone-call"></i></span>
+                      <div class="addr-info">
+                        <a href="tel:+1(888)7601940">+ 1 (888) 760 1940</a>
+                      </div>
+                    </div>
+                    <div class="footer-address">
+                      <span><i class="feather-mail"></i></span>
+                      <div class="addr-info">
+                        <a
+                          href="https://dreamsrent.dreamguystech.com/cdn-cgi/l/email-protection#24575154544b565064415c45495448410a474b49"
+                          ><span
+                            class="__cf_email__"
+                            data-cfemail="a9dadcd9d9c6dbdde9ccd1c8c4d9c5cc87cac6c4"
+                            >[email&#160;protected]</span
+                          ></a
+                        >
+                      </div>
+                    </div>
+                    <div class="update-form">
+                    {% if checkErr == "0" %}
+                    <p style="color: red">Please enter Email</p>
+                    {% elif checkErr == "1" %}
+                    <p style="color: green">Account Successfully created</p>
+                    {% elif checkErr == "2" %}
+                    <p style="color: red">Email already exist!</p>
+                    {% endif %}
+                      <form action="insertSub" method="POST">
+                        {% csrf_token %}
+                        <span><i class="feather-mail"></i></span>
+                        <input
+                          type="email"
+                          name="subEmail"
+                          class="form-control"
+                          placeholder="Enter You Email Here"
+                        />
+                        <button type="submit" class="btn btn-subscribe">
+                          <span><i class="feather-send"></i></span>
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="footer-social-widget d-flex flex-row-reverse">
+                    <ul class="nav-social">
+                      <li>
+                        <a href="javascript:void(0)" target="_blank"
+                          ><i
+                            class="fa-brands fa-facebook-f fa-facebook fi-icon"
+                          ></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)" target="_blank"
+                          ><i class="fab fa-instagram fi-icon"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0)" target="_blank"
+                          ><i class="fab fa-twitter fi-icon"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom text-center">
+          <div class="container">
+            <div class="copyright">
+              <div class="row align-items-center">
+                <div class="col-md-12">
+                  <div class="copyright-text">
+                    <p>© 2023 Rental Car. All Rights Reserved.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <div class="progress-wrap active-progress">
+      <svg
+        class="progress-circle svg-content"
+        width="100%"
+        height="100%"
+        viewbox="-1 -1 102 102"
+      >
+        <path
+          d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+          style="
+            transition: stroke-dashoffset 10ms linear 0s;
+            stroke-dasharray: 307.919px, 307.919px;
+            stroke-dashoffset: 228.265px;
+          "
+        ></path>
+      </svg>
+    </div>
+
+    <script
+      data-cfasync="false"
+      src="static/assets/js/email-decode.min.js"
+    ></script>
+    <script src="static/assets/js/jquery-3.6.4.min.js"></script>
+
+    <script src="static/assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="static/assets/js/jquery.waypoints.js"></script>
+    <script src="static/assets/js/jquery.counterup.min.js"></script>
+
+    <script src="static/assets/plugins/select2/js/select2.min.js"></script>
+
+    <script src="static/assets/plugins/aos/aos.js"></script>
+
+    <script src="static/assets/js/backToTop.js"></script>
+
+    <script src="static/assets/plugins/moment/moment.min.js"></script>
+    <script src="static/assets/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script src="static/assets/js/owl.carousel.min.js"></script>
+
+    <script src="static/assets/js/script.js"></script>
+  </body>
+
+  <!-- Mirrored from dreamsrent.dreamguystech.com/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Jul 2023 19:31:44 GMT -->
+</html>
+<script>
+	$(document).on("click","#submitconbook",function() {
+		$('#conbook').click()
+	});
+</script>

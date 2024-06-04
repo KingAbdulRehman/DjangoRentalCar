@@ -1,0 +1,483 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="banner-section banner-slider">
+  <div class="container">
+    <div class="home-banner">
+      <div class="row align-items-center">
+        <div class="col-lg-6" data-aos="fade-down">
+          <p class="explore-text">
+            <span><i class="fa-solid fa-thumbs-up me-2"></i></span>100% Trusted
+            car rental platform in the World
+          </p>
+          <h1>
+            Find Your Best <br />
+            <span>Dream Car for Rental</span>
+          </h1>
+          <p>
+            A car rental, hire car or car hire agency is a company that rents automobiles for short periods of time to the public, generally ranging from a few hours to a few weeks. It is often organized with numerous local branches (which allow a user to return a vehicle).
+          </p>
+          <div class="view-all">
+            <a
+              href="carlist"
+              class="btn btn-view d-inline-flex align-items-center"
+              >View all Cars
+              <span><i class="feather-arrow-right ms-2"></i></span
+            ></a>
+          </div>
+        </div>
+        <div class="col-lg-6" data-aos="fade-down">
+          <div class="banner-imgs">
+            <img
+              src="static/assets/img/car-right.png"
+              class="img-fluid aos"
+              alt="bannerimage"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section services">
+  <div class="service-right">
+    <img
+      src="static/assets/img/bg/service-right.svg"
+      class="img-fluid"
+      alt="services right"
+    />
+  </div>
+  <div class="container">
+    <div class="section-heading" data-aos="fade-down">
+      <h2>How It Works</h2>
+      <p>
+        Our company operate by purchasing or leasing a number of fleet vehicles and renting them to their customers for a fee.
+      </p>
+    </div>
+
+    <div class="services-work">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-12" data-aos="fade-down">
+          <div class="services-group">
+            <div class="services-icon border-secondary">
+              <img
+                class="icon-img bg-secondary"
+                src="static/assets/img/icons/services-icon-01.svg"
+                alt="Choose Locations"
+              />
+            </div>
+            <div class="services-content">
+              <h3>1. Come on Our Showroom</h3>
+              <p>
+                A showroom is a large space used to display products for sale, such as automobiles, furniture, appliances, carpets or apparel.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-12" data-aos="fade-down">
+          <div class="services-group">
+            <div class="services-icon border-warning">
+              <img
+                class="icon-img bg-warning"
+                src="static/assets/img/icons/services-icon-01.svg"
+                alt="Choose Locations"
+              />
+            </div>
+            <div class="services-content">
+              <h3>2. Select Car</h3>
+              <p>
+                 Choose from a diverse range of vehicles to suit your needs. Round-the-clock customer assistance for any queries or concerns.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-12" data-aos="fade-down">
+          <div class="services-group">
+            <div class="services-icon border-dark">
+              <img
+                class="icon-img bg-dark"
+                src="static/assets/img/icons/services-icon-01.svg"
+                alt="Choose Locations"
+              />
+            </div>
+            <div class="services-content">
+              <h3>3. Book your Car</h3>
+              <p>
+                With our car booking service, you can travel anywhere your heart desires, unlocking new experiences at your own pace.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section popular-services popular-explore">
+  <div class="container">
+    <div class="section-heading" data-aos="fade-down">
+      <h2>Our Latest Cars</h2>
+      <p>
+        A car or an automobile is a motor vehicle with wheels. Most definitions of cars say that they run primarily on roads, seat one to eight people, have four wheels, and mainly transport people, not cargo.
+      </p>
+    </div>
+
+    <div class="tab-content">
+      <div class="tab-pane active">
+        <div class="row">
+          {% for data in car %}
+          <div class="col-lg-4 col-md-6 col-12" data-aos="fade-down">
+            <div class="listing-item">
+              <div class="listing-img">
+                <a href="carDetails?id={{data.v_id}}">
+                  <img
+                    src="media/{{ data.v_image }}"
+                    class="img-fluid"
+                    alt="{{data.v_name}}"
+                  />
+                </a>
+                <div class="fav-item">
+                  <span class="featured-text">{{data.v_brand.b_name}}</span>
+                </div>
+              </div>
+              <div class="listing-content">
+                <div class="listing-features">
+                  <h3 class="listing-title">
+                    <a href="carDetails?id={{data.v_id}}">{{data.v_name}}</a>
+                  </h3>
+                </div>
+                <div class="listing-details-group">
+                    <ul>
+                        <li> <span><img src="static/assets/img/icons/car-parts-05.svg" alt="Auto"></span>
+                            <p>{{data.v_bodyType}}</p>
+                        </li>
+                        <li> <span><img src="static/assets/img/icons/car-parts-04.svg" alt="Power"></span>
+                            <p>{{data.v_engine}} CC</p>
+                        </li>
+                        <li> <span><img src="static/assets/img/icons/car-parts-03.svg" alt="Petrol"></span>
+                            <p>{{data.v_fuelType}}</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="listing-location-details">
+                  <div class="listing-price">
+                  </div>
+                  <div class="listing-price">
+                    <h6>${{data.v_price}} <span>/ Day</span></h6>
+                  </div>
+                </div>
+                <div class="listing-button">
+                  <a href="carDetails?id={{data.v_id}}" class="btn btn-order"
+                    ><span><i class="feather-calendar me-2"></i></span>Rent
+                    Now</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--
+<section class="section popular-car-type">
+  <div class="container">
+    <div class="section-heading" data-aos="fade-down">
+      <h2>Most Popular Brands</h2>
+    </div>
+
+    <div class="row">
+      <div class="popular-slider-group">
+        <div class="owl-carousel popular-cartype-slider owl-theme">
+          {% for data in brand %}
+          <div class="listing-owl-item">
+            <div class="listing-owl-group">
+              <div class="listing-owl-img">
+                <img
+                  src="media/{{data.b_image}}"
+                  class=""
+                  alt="Popular brandImage"
+                />
+              </div>
+              <h5>{{data.b_name}}</h5>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="view-all text-center" data-aos="fade-down">
+      <a
+        href="listing-grid.html"
+        class="btn btn-view d-inline-flex align-items-center"
+        >View all Cars <span><i class="feather-arrow-right ms-2"></i></span
+      ></a>
+    </div>
+  </div>
+</section>
+-->
+
+<section class="section facts-number">
+  <div class="facts-left">
+    <img
+      src="static/assets/img/bg/facts-left.png"
+      class="img-fluid"
+      alt="facts left"
+    />
+  </div>
+  <div class="facts-right">
+    <img
+      src="static/assets/img/bg/facts-right.png"
+      class="img-fluid"
+      alt="facts right"
+    />
+  </div>
+  <div class="container">
+    <div class="section-heading" data-aos="fade-down">
+      <h2 class="title text-white">Facts By The Numbers</h2>
+    </div>
+
+    <div class="counter-group">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 col-12 d-flex" data-aos="fade-down">
+          <div class="count-group flex-fill">
+            <div class="customer-count d-flex align-items-center">
+              <div class="count-img">
+                <img src="static/assets/img/icons/bx-heart.svg" alt />
+              </div>
+              <div class="count-content">
+                <h4><span class="counterUp">16</span>K+</h4>
+                <p>Happy Customers</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12 d-flex" data-aos="fade-down">
+          <div class="count-group flex-fill">
+            <div class="customer-count d-flex align-items-center">
+              <div class="count-img">
+                <img src="static/assets/img/icons/bx-car.svg" alt />
+              </div>
+              <div class="count-content">
+                <h4><span class="counterUp">2547</span>+</h4>
+                <p>Count of Cars</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12 d-flex" data-aos="fade-down">
+          <div class="count-group flex-fill">
+            <div class="customer-count d-flex align-items-center">
+              <div class="count-img">
+                <img src="static/assets/img/icons/bx-headphone.svg" alt />
+              </div>
+              <div class="count-content">
+                <h4><span class="counterUp">625</span>K+</h4>
+                <p>Car Center Solutions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12 d-flex" data-aos="fade-down">
+          <div class="count-group flex-fill">
+            <div class="customer-count d-flex align-items-center">
+              <div class="count-img">
+                <img src="static/assets/img/icons/bx-history.svg" alt />
+              </div>
+              <div class="count-content">
+                <h4><span class="counterUp">200</span>K+</h4>
+                <p>Total Kilometer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section popular-services">
+  <div class="container">
+    <div class="section-heading" data-aos="fade-down">
+      <h2>Recommended Car Rental deals</h2>
+      <p>
+        The best car descriptions give buyers key details without unnecessary information that can distract or bore the reader.
+      </p>
+    </div>
+
+    <div class="row">
+      <div class="popular-slider-group">
+        <div class="owl-carousel rental-deal-slider owl-theme">
+          {% for data in car %}
+          <div class="rental-car-item">
+            <div class="listing-item mb-0">
+              <div class="listing-img">
+                <a href="listing-details.html">
+                  <img
+                    src="media/{{data.v_image}}"
+                    class="img-fluid"
+                    alt="Toyota"
+                  />
+                </a>
+              </div>
+              <div class="listing-content">
+                <div class="listing-features">
+                  <div class="fav-item-rental">
+                    <span class="featured-text">${{data.v_price}}/day</span>
+                  </div>
+                  <h3 class="listing-title">
+                    <a href="listing-details.html">{{data.v_name}}</a>
+                  </h3>
+                </div>
+                <div class="listing-details-group">
+                    <ul>
+                        <li> <span><img src="static/assets/img/icons/car-parts-05.svg" alt="Auto"></span>
+                            <p>{{data.v_bodyType}}</p>
+                        </li>
+                        <li> <span><img src="static/assets/img/icons/car-parts-04.svg" alt="Power"></span>
+                            <p>{{data.v_engine}} CC</p>
+                        </li>
+                        <li> <span><img src="static/assets/img/icons/car-parts-03.svg" alt="Petrol"></span>
+                            <p>{{data.v_fuelType}}</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="listing-button">
+                  <a href="listing-details.html" class="btn btn-order"
+                    ><span><i class="feather-calendar me-2"></i></span>Rent
+                    Now</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="view-all text-center" data-aos="fade-down">
+      <a
+        href="carlist"
+        class="btn btn-view d-inline-flex align-items-center"
+        >Go to all Cars <span><i class="feather-arrow-right ms-2"></i></span
+      ></a>
+    </div>
+  </div>
+</section>
+
+<section class="section why-choose popular-explore">
+  <div class="choose-left">
+    <img
+      src="static/assets/img/bg/choose-left.png"
+      class="img-fluid"
+      alt="Why Choose Us"
+    />
+  </div>
+  <div class="container">
+    <div class="section-heading" data-aos="fade-down">
+      <h2>Why Choose Us</h2>
+      <p>
+        Lorem Ipsum has been the industry's standard dummy text ever since the
+        1500s,
+      </p>
+    </div>
+
+    <div class="why-choose-group">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-12 d-flex" data-aos="fade-down">
+          <div class="card flex-fill">
+            <div class="card-body">
+              <div class="choose-img choose-black">
+                <img src="static/assets/img/icons/bx-user-check.svg" alt />
+              </div>
+              <div class="choose-content">
+                <h4>Easy & Fast Booking</h4>
+                <p>
+                  Completely carinate e business testing process whereas fully
+                  researched customer service. Globally extensive content with
+                  quality.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-12 d-flex" data-aos="fade-down">
+          <div class="card flex-fill">
+            <div class="card-body">
+              <div class="choose-img choose-primary">
+                <img src="static/assets/img/icons/bx-user-check.svg" alt />
+              </div>
+              <div class="choose-content">
+                <h4>Customer Satisfaction</h4>
+                <p>
+                  Globally user centric method interactive. Seamlessly
+                  revolutionize unique portals corporate collaboration.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section about-testimonial testimonials-section">
+  <div class="container">
+    <div class="section-heading" data-aos="fade-down">
+      <h2 class="title text-white">What People say about us?</h2>
+      <p class="description text-white">
+        Lorem Ipsum has been the industry's standard dummy text ever since the
+        1500s,
+      </p>
+    </div>
+
+    <div class="owl-carousel about-testimonials testimonial-group mb-0 owl-theme">
+      {% for data in Testimonial %}
+        <div class="testimonial-item d-flex">
+          <div class="card flex-fill">
+            <div class="card-body">
+              <div class="quotes-head"></div>
+              <div class="review-box">
+                <!--<div class="review-profile">
+                  <div class="review-img">
+                    <img
+                      src="static/assets/img/profiles/avatar-02.jpg"
+                      class="img-fluid"
+                      alt="img"
+                    />
+                  </div>
+                </div>-->
+                <div class="review-details">
+                  <h6>{{ data.t_name }}</h6>
+                  <div class="list-rating">
+                    <div class="list-rating-star">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                    </div>
+                    <p><span>({{ data.t_rating }})</span></p>
+                  </div>
+                </div>
+              </div>
+              <p>
+                {{ data.t_description }}
+              </p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+{% endblock content %}

@@ -1,0 +1,77 @@
+{% extends 'base.html' %} {% block content %}
+<div class="breadcrumb-bar">
+    <div class="container">
+        <div class="row align-items-center text-center">
+            <div class="col-md-12 col-12">
+                <h2 class="breadcrumb-title">Car Listings</h2>
+                <nav aria-label="breadcrumb" class="page-breadcrumb"> </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="section car-listing">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    {% for data in cars %}
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-12">
+                        <div class="listing-item">
+                            <div class="listing-img"> <a href="carDetails?id={{data.v_id}}"> <img src="media/{{data.v_image}}" class="img-fluid" alt="Toyota"> </a>
+                                <div class="fav-item"> <span class="featured-text">{{data.v_brand.b_name}}</span></div>
+                            </div>
+                            <div class="listing-content">
+                                <div class="listing-features"></a>
+                                    <h3 class="listing-title"> <a href="carDetails?id={{data.v_id}}">{{data.v_name}}</a> </h3>
+                                </div>
+                                <div class="listing-details-group">
+                                    <ul>
+                                        <li> <span><img src="static/assets/img/icons/car-parts-05.svg" alt="Auto"></span>
+                                            <p>{{data.v_bodyType}}</p>
+                                        </li>
+                                        <li> <span><img src="static/assets/img/icons/car-parts-04.svg" alt="Power"></span>
+                                            <p>{{data.v_engine}} CC</p>
+                                        </li>
+                                        <li> <span><img src="static/assets/img/icons/car-parts-03.svg" alt="Petrol"></span>
+                                            <p>{{data.v_fuelType}}</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="listing-location-details">
+                                    <div class="listing-price">
+                                    </div>
+                                    <div class="listing-price">
+                                        <h6>${{data.v_price}}<span>/ Day</span></h6>
+                                    </div>
+                                </div>
+                                <div class="listing-button"> <a href="carDetails?id={{data.v_id}}" class="btn btn-order"><span><i class="feather-calendar me-2"></i></span>Rent Now</a> </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+<!--                <div class="blog-pagination">-->
+<!--                    <nav>-->
+<!--                        <ul class="pagination page-item justify-content-center">-->
+<!--                            <li class="previtem"> <a class="page-link" href="#"><i class="fas fa-regular fa-arrow-left me-2"></i> Prev</a> </li>-->
+<!--                            <li class="justify-content-center pagination-center">-->
+<!--                                <div class="page-group">-->
+<!--                                    <ul>-->
+<!--                                        <li class="page-item"> <a class="page-link" href="#">1</a> </li>-->
+<!--                                        <li class="page-item"> <a class="active page-link" href="#">2 <span class="visually-hidden">(current)</span></a> </li>-->
+<!--                                        <li class="page-item"> <a class="page-link" href="#">3</a> </li>-->
+<!--                                        <li class="page-item"> <a class="page-link" href="#">4</a> </li>-->
+<!--                                        <li class="page-item"> <a class="page-link" href="#">5</a> </li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                            </li>-->
+<!--                            <li class="nextlink"> <a class="page-link" href="#">Next <i class="fas fa-regular fa-arrow-right ms-2"></i></a> </li>-->
+<!--                        </ul>-->
+<!--                    </nav>-->
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

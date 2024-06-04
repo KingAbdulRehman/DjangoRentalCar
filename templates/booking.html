@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% block content %}
+<div class="breadcrumb-bar">
+ <div class="container">
+  <div class="row align-items-center text-center">
+   <div class="col-md-12 col-12">
+    <h2 class="breadcrumb-title">Booking History</h2>
+    <nav aria-label="breadcrumb" class="page-breadcrumb"> </nav>
+   </div>
+  </div>
+ </div>
+</div>
+<section class="order-confirmation">
+ <div class="container">
+  <div class="confirm-order">
+   <div class="section-title">
+    <h3>Booking History Details</h3>
+   </div>
+   {% for data in book %}
+   <div class="booking-details order-confirm-box">
+    <div class="row">
+     <div class="col-lg-12">
+      <div class="confirmation-title">
+       <h4>Vehicle Details</h4> <a href="carDetails?id={{data.b_vehicle.v_id}}">Vehicle Details</a>
+      </div>
+      <div class="order-car"> <span><img src="media/{{data.b_vehicle.v_image}}" alt></span>
+       <h5>{{data.b_vehicle.v_name}}<span>Cost: ${{data.b_vehicle.v_price}}/Day</span>
+       <span><p style="color: black; font-size: 14px;">Book Date Time: {{data.b_bookdate}}</p></span>
+       <span><p style="color: black; font-size: 14px;">Return Date Time: {{data.b_returndate}}</p></span>
+       </h5>
+      </div>
+     </div>
+    </div>
+   </div>
+   {% endfor %}
+  </div>
+ </div>
+</section>
+{% endblock content %}

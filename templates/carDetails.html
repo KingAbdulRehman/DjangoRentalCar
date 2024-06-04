@@ -1,0 +1,381 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="main-wrapper">
+	<div class="breadcrumb-bar">
+		<div class="container">
+			<div class="row align-items-center text-center">
+				<div class="col-md-12 col-12">
+					<h2 class="breadcrumb-title">Chevrolet Camaro</h2>
+					<nav aria-label="breadcrumb" class="page-breadcrumb"></nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<section class="product-detail-head">
+		<div class="container">
+			<div class="detail-page-head">
+				<div class="detail-headings">
+					<div class="star-rated">
+<!--						<div class="list-rating">-->
+<!--							<span class="year">2023</span>-->
+<!--						</div>-->
+						<div class="camaro-info">
+							<h3>{{data.v_name}}</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="section product-details">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="detail-product">
+						<div class="slider detail-bigimg">
+							<div class="product-img">
+								<img src="media/{{data.v_image}}" width="700px" alt="Slider">
+							</div>
+						</div>
+					</div>
+					<div class="review-sec specification-card ">
+						<div class="review-header">
+							<h4>Specifications</h4>
+						</div>
+						<div class="card-body">
+							<div class="lisiting-featues">
+								<div class="row">
+									<div class="featureslist d-flex align-items-center col-lg-3 col-md-4">
+										<div class="feature-img">
+											<img src="static/assets/img/specification/specification-icon-1.svg" alt>
+										</div>
+										<div class="featues-info">
+											<span>Body </span>
+											<h6> {{data.v_bodyType}}</h6>
+										</div>
+									</div>
+									<div class="featureslist d-flex align-items-center col-lg-3 col-md-4">
+										<div class="feature-img">
+											<img src="static/assets/img/specification/specification-icon-2.svg" alt>
+										</div>
+										<div class="featues-info">
+											<span>Make </span>
+											<h6> {{data.v_brand.b_name}}</h6>
+										</div>
+									</div>
+									<div class="featureslist d-flex align-items-center col-lg-3 col-md-4">
+										<div class="feature-img">
+											<img src="static/assets/img/specification/specification-icon-12.svg" alt>
+										</div>
+										<div class="featues-info">
+											<span>Engine (Hp) </span>
+											<h6> {{data.v_engine}}</h6>
+										</div>
+									</div>
+									<div class="featureslist d-flex align-items-center col-lg-3 col-md-4">
+										<div class="feature-img">
+											<img src="static/assets/img/specification/specification-icon-4.svg" alt>
+										</div>
+										<div class="featues-info">
+											<span>Fuel Type </span>
+											<h6> {{data.v_fuelType}}</h6>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="review-sec listing-feature">
+						<div class="review-header">
+							<h4>Car Features</h4>
+						</div>
+						<div class="listing-description">
+							<div class="row">
+								<ul>
+									{% if data.v_powerWindow %}
+									<li class="col-md-4"><span><i class="fa-solid fa-check-double"></i></span>Power Window</li>
+									{% endif %}
+									{% if data.v_bluetooth %}
+									<li class="col-md-4"><span><i class="fa-solid fa-check-double"></i></span>Bluetooth</li>
+									{% endif %}
+								</ul>
+								<ul>
+									{% if data.v_keylessStart %}
+									<li class="col-md-4"><span><i class="fa-solid fa-check-double"></i></span>Key Less Start</li>
+									{% endif %}
+									{% if data.v_cruiseControl %}
+									<li class="col-md-4"><span><i class="fa-solid fa-check-double"></i></span>Cruise Control</li>
+									{% endif %}
+								</ul>
+								<ul>
+									{% if data.v_navigation %}
+									<li class="col-md-4"><span><i class="fa-solid fa-check-double"></i></span>Navigation System</li>
+									{% endif %}
+									{% if data.v_heatedSeats %}
+									<li class="col-md-4"><span><i class="fa-solid fa-check-double"></i></span>Heated Seats</li>
+									{% endif %}
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="review-sec extra-service mb-0">
+						<div class="review-header">
+							<h4>Description of Listing</h4>
+						</div>
+						<div class="description-list">
+							<p>
+								{{data.v_description}}
+							</p>
+						</div>
+					</div>
+					<!-- <div class="review-sec leave-reply-form">
+						<div class="review-header">
+						<h4>Leave a Reply</h4>
+						</div>
+						<ul class="review-list-rating mb-3">
+						<li>
+						quality
+						<p>
+						<i class="fas fa-star filled"></i>
+						<i class="fas fa-star filled"></i>
+						<i class="fas fa-star filled"></i>
+						<i class="fas fa-star filled"></i>
+						<i class="fas fa-star filled"></i>
+						</p>
+						</li>
+						<li>
+						Price
+						<p>
+						<i class="fas fa-star filled"></i>
+						<i class="fas fa-star filled"></i>
+						<i class="fas fa-star filled"></i>
+						<i class="fas fa-star filled"></i>
+						<i class="fas fa-star filled"></i>
+						</p>
+						</li>
+						<li>
+						Comfort
+						<p>
+						<i class="fas fa-star filled"></i>
+						<i class="fas fa-star filled"></i>
+						<i class="fas fa-star filled"></i>
+						<i class="fas fa-star filled"></i>
+						<i class="fas fa-star filled"></i>
+						</p>
+						</li>
+						<li>
+						Driving
+						<p>
+						<i class="fas fa-star filled"></i>
+						<i class="fas fa-star filled"></i>
+						<i class="fas fa-star filled"></i>
+						<i class="fas fa-star filled"></i>
+						<i class="fas fa-star filled"></i>
+						</p>
+						</li>
+						</ul>
+						<div class="card-body">
+						<div class="review-list">
+						<ul>
+						<li class="review-box feedbackbox mb-0">
+						<div class="review-details">
+						<form class="#">
+						<div class="row">
+						<div class="col-lg-6">
+						<div class="form-group">
+						<label>Full Name <span class="text-danger">*</span></label>
+						<input type="text" class="form-control">
+						</div>
+						</div>
+						<div class="col-lg-6">
+						<div class="form-group">
+						<label>Email Address <span class="text-danger">*</span></label>
+						<input type="email" class="form-control">
+						</div>
+						</div>
+						<div class="col-lg-12">
+						<div class="form-group">
+						<label>Comments </label>
+						<textarea rows="4" class="form-control"></textarea>
+						</div>
+						</div>
+						</div>
+						<div class="submit-btn">
+						<button class="btn btn-primary submit-review" type="submit"> Submit Review</button>
+						</div>
+						</form>
+						</div>
+						</li>
+						</ul>
+						</div>
+						</div>
+						</div> -->
+				</div>
+				<div class="col-lg-4 theiaStickySidebar">
+					<div class="review-sec mt-0">
+						<div class="review-header">
+							<h4>Book Now</h4>
+						</div>
+						<div class>
+							<form action="confirmBook" method="POST">
+								<ul>
+									<li class="column-group-main">
+										<div class="form-group m-0">
+											<label>Booking Date</label>
+										</div>
+										<div class="form-group-wrapp sidebar-form">
+											{% csrf_token %}
+											<div class="form-group w-100">
+												<div class="">
+													<input type="datetime-local" name="bookDate" required class="form-control">
+												</div>
+											</div>
+										</div>
+										<div class="form-group m-0">
+											<label>Return Date</label>
+										</div>
+										<div class="form-group-wrapp sidebar-form">
+											<div class="form-group me-2 w-100">
+												<div class="">
+													<input type="datetime-local" name="retDate" required class="form-control">
+												</div>
+											</div>
+										</div>
+										<input type="hidden" name="vId" value="{{data.v_id}}">
+										<input type="submit" id="conbook" name="conbook" style="display: none;">
+									</li>
+									<li class="column-group-last">
+										<div class="form-group mb-0">
+											<div class="search-btn">
+												<button class="btn btn-primary check-available w-100" type="button" data-bs-toggle="modal"
+														{% if request.session.id > 0 %}
+														data-bs-target="#pages_edit"
+														{% else %}
+														data-bs-target="#firstLogin"
+														{% endif %}
+													>Book Now</button>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</form>
+						</div>
+					</div>
+					<div class="review-sec share-car mt-0">
+						<div class="review-header">
+							<h4>Share this car</h4>
+						</div>
+						<ul class="nav-social">
+							<li>
+								<a href="javascript:void(0)"><i class="fa-brands fa-facebook-f fa-facebook fi-icon"></i></a>
+							</li>
+							<li>
+								<a href="javascript:void(0)"><i class="fab fa-instagram fi-icon"></i></a>
+							</li>
+							<li>
+								<a href="javascript:void(0)"><i class="fab fa-behance fi-icon"></i></a>
+							</li>
+							<li>
+								<a href="javascript:void(0)"><i class="fa-brands fa-pinterest-p fi-icon"></i></a>
+							</li>
+							<li>
+								<a href="javascript:void(0)"><i class="fab fa-twitter fi-icon"></i> </a>
+							</li>
+							<li>
+								<a href="javascript:void(0)"><i class="fab fa-linkedin fi-icon"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="modal custom-modal fade check-availability-modal" id="pages_edit" role="dialog">
+		<div class="modal-dialog modal-dialog-centered modal-md">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="form-header text-start mb-0">
+						<h4 class="mb-0 text-dark fw-bold">Booking Details</h4>
+					</div>
+					<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+					<span class="align-center" aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-lg-12 col-md-12">
+							<div class="available-for-ride">
+								<p><i class="fa-regular fa-circle-check"></i>{{ data.v_name }} is available for a ride</p>
+							</div>
+						</div>
+						<div class="col-lg-12 col-md-12">
+							<div class="row booking-info">
+								<div class="col-md-8 pickup-address">
+									<h5>Book</h5>
+									<div class="booking-info service-tax">
+										<ul>
+											<li>Booking Price <span>${{ data.v_price }}</span></li>
+											<li>Tax <span>$5</span></li>
+										</ul>
+									</div>
+									<div class="grand-total">
+										<h5>Grand Total</h5>
+										<span>$
+											{% with b=5 %}
+												{{ data.v_price|add:b }}
+											{% endwith %}
+										</span>
+									</div>
+								</div>
+								<div class="col-md-4 booking-amount">
+									<h5>Booking Amount</h5>
+									<h6><span>${{data.v_price}} </span> /day</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<btn class="btn btn-primary" id="submitconbook"><i class="feather-bar-chart me-2"></i>Confirm Book</btn>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal custom-modal fade check-availability-modal payment-success-modal" id="confirmBook" role="dialog">
+<div class="modal-dialog modal-dialog-centered modal-md">
+<div class="modal-content">
+<div class="modal-body">
+<div class="payment-success">
+<span class="check"><i class="fa-solid fa-check-double"></i></span>
+<h5>Order Confirmed</h5>
+<p>You Payment has been successfully done.
+Trasaction id :<span> #5064164454</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal custom-modal fade check-availability-modal payment-success-modal" id="firstLogin" role="dialog">
+<div class="modal-dialog modal-dialog-centered modal-md">
+<div class="modal-content">
+<div class="modal-body">
+<div class="payment-success">
+<span style="background-color: red" class="check"><i class="fa-solid fa-times"></i></span>
+<h5 style="color: red" >!! Authentication Error</h5>
+<p>
+	First You Need to do login first
+	<br>
+	<a href="login">Click Here For Login</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock content %}
+
