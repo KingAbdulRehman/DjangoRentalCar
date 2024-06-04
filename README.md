@@ -1,4 +1,4 @@
-way way to run this project 
+easy way way to run this project 
 
 First of all verify you already installed python latest version, if you are not installed then visit: https://www.python.org/downloads/
 
